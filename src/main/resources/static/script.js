@@ -26,8 +26,8 @@ function testFill(){
     fillProducts(testProducts)
 }
 
-// window.onload = getProducts;
-window.onload=testFill;
+window.onload = getProducts;
+// window.onload=testFill;
 
 function fillProducts(products) {
     let box = $("#products");
@@ -46,9 +46,10 @@ function onError() {
 
 function getProducts() {
     $.ajax({
-        type:'get',
+        type:'GET',
         url: '/products',
-        contentType: 'application/json'
-    }).done(fillProducts)
-        .fail(onError)
+        // contentType: 'application/json'
+        success: fillProducts,
+        error: onError
+    })
 }
