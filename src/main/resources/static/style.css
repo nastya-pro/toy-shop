@@ -1,0 +1,154 @@
+body {
+    background: lightgray;
+}
+
+.main{
+    width: 1600px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    font-size: 1.3em;
+    display: inline-block;
+    width: 73%;
+}
+
+.image_box{
+    width: 100%;
+    height: 40%;
+    overflow-x:hidden;
+}
+
+.image {
+    height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.text {
+    text-align: center;
+    padding: 20px;
+}
+
+.tile {
+    width: 291px;
+    height: 500px;
+    margin: 15px;
+    border: 2px brown solid;
+    border-radius: 30px;
+    display: inline-block;
+    padding: 30px;
+    background: radial-gradient(bisque, white);
+}
+
+.a_button{
+    border-radius: 15px;
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+
+.delete {
+    border-bottom: 2px brown solid;
+    background: crimson;
+}
+
+.edit {
+    border-bottom: 2px darkgreen solid;
+    background: forestgreen;
+}
+
+.cost {
+    border: 2px brown solid;
+    border-radius: 8px;
+    width: 160px;
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.top {
+    display: inline-block;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: brown;
+    margin-top: 0;
+}
+
+.title div {
+    display: inline-block;
+    height: 50px;
+    position: relative;
+}
+
+.title img {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    border-radius: 30px
+}
+
+.title span {
+    font-size: 1.5em;
+    display: inline-block;
+    margin-left: 40px;
+    padding: 4px 20px;
+}
+
+.menu_container {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: darksalmon;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.menu {
+    width: 920px;
+    margin: auto;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.menu_item {
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.menu_item a {
+    padding: 18px 30px;
+    text-decoration: none;
+}
+
+.menu_item a:link, .menu_item a:visited {
+    color: white;
+}
+
+.menu_item a:hover {
+    background: antiquewhite;
+}
+
+.search {
+    width: 15%;
+    height: 600px;
+    float: left;
+    background: white;
+    border-radius: 20px;
+    padding: 50px;
+    margin-right: 10px;
+    display: inline-block;
+}
