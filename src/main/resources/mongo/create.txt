@@ -1,0 +1,9 @@
+use Shop
+/*****************************************************************/
+/*Insert PRODUCTS*/
+/*****************************************************************/
+db.PRODUCTS.insert({_id:NumberInt(1),Information:[{"title":"Мишка","imgUrl": "img/Мишка.jpg", "description": "Милый плюшевый мишка станет лучшим другом вашему ребенку.", "vendorCode": "023498", "price": NumberInt(1700)}]});
+db.PRODUCTS.insert({_id:NumberInt(2),Information:[{"title": "Пикачу","imgUrl": "img/Пикачу.jpg","description": "Детектив Пикачу поможет найти сладости и конечно же кофе.", "vendorCode": "190384","price": NumberInt(987)}]});
+db.PRODUCTS.insert({_id:NumberInt(3),Information:[{"title": "Пингвинёнок", "imgUrl": "img/Пингвинёнок.jpg","description": "Мягкий пингвинёнок скрасит холодные и грустные вечера.", "vendorCode": "193278", "price": NumberInt(1500)}]});
+db.PRODUCTS.insert({_id:NumberInt(4),Information:[{"title": "Крот", "imgUrl":"img\Крот.jpg","description": "Все же помнят этого замечательного Крота из чешского мультфильма? Почему бы не приютить его у себя дома?", "vendorCode": "075683","price": NumberInt(1200)}]});
+db.PRODUCTS.insert({_id:NumberInt(5),Information:[{"title": "Панда", "imgUrl":"img\Панда.jpg","description": "Все панды милые и смешные.", "vendorCode": "038394","price": NumberInt(2200)}]});
