@@ -2,8 +2,8 @@ use Shop
 /*****************************************************************/
 /*Insert PRODUCTS*/
 /*****************************************************************/
-db.PRODUCTS.insert({_id:"19b2c05c-68c1-4012-9289-fb5fc5be40a8","title":"Мишка","imgUrl": "img/Мишка.jpg", "description": "Милый плюшевый мишка станет лучшим другом вашему ребенку.", "vendorCode": "023498", "price": NumberInt(1700)});
-db.PRODUCTS.insert({_id:"cff828fa-162a-402b-95cf-08e35b0f6875","title": "Пикачу","imgUrl": "img/Пикачу.jpg","description": "Детектив Пикачу поможет найти сладости и конечно же кофе.", "vendorCode": "190384","price": NumberInt(987)});
-db.PRODUCTS.insert({_id:"6ba33040-2097-46ca-a3d7-25af7632d5f9","title": "Пингвинёнок", "imgUrl": "img/Пингвинёнок.jpg","description": "Мягкий пингвинёнок скрасит холодные и грустные вечера.", "vendorCode": "193278", "price": NumberInt(1500)});
-db.PRODUCTS.insert({_id:"eef50df2-c6b0-4227-8377-5b1dbef21355","title": "Крот", "imgUrl":"img\Крот.jpg","description": "Все же помнят этого замечательного Крота из чешского мультфильма? Почему бы не приютить его у себя дома?", "vendorCode": "075683","price": NumberInt(1200)});
-db.PRODUCTS.insert({_id:"be5fe26a-61cf-4330-bbb6-4fa5cecd14df","title": "Панда", "imgUrl":"img\Панда.jpg","description": "Все панды милые и смешные.", "vendorCode": "038394","price": NumberInt(2200)});
+db.PRODUCTS.insert({"title":"Мишка","imgUrl": "img/Мишка.jpg", "description": "Милый плюшевый мишка станет лучшим другом вашему ребенку.", "vendorCode": "023498", "price": NumberInt(1700)});
+db.PRODUCTS.insert({"title": "Пикачу","imgUrl": "img/Пикачу.jpg","description": "Детектив Пикачу поможет найти сладости и конечно же кофе.", "vendorCode": "190384","price": NumberInt(987)});
+db.PRODUCTS.insert({"title": "Пингвинёнок", "imgUrl": "img/Пингвинёнок.jpg","description": "Мягкий пингвинёнок скрасит холодные и грустные вечера.", "vendorCode": "193278", "price": NumberInt(1500)});
+db.PRODUCTS.insert({"title": "Крот", "imgUrl":"img\Крот.jpg","description": "Все же помнят этого замечательного Крота из чешского мультфильма? Почему бы не приютить его у себя дома?", "vendorCode": "075683","price": NumberInt(1200)});
+db.PRODUCTS.insert({"title": "Панда", "imgUrl":"img\Панда.jpg","description": "Все панды милые и смешные.", "vendorCode": "038394","price": NumberInt(2200)});

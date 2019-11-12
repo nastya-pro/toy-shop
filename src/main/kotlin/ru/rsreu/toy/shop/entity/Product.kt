@@ -1,5 +1,6 @@
 package ru.rsreu.toy.shop.entity
 
+import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
@@ -9,7 +10,7 @@ import java.util.*
 data class Product(
     @Id
     @Field("_id")
-    val id: UUID,
+    val id: ObjectId,
     val title: String,
     val imgUrl: String,
     val description: String,

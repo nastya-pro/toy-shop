@@ -40,22 +40,30 @@ function fillProducts(products) {
     }
 }
 
-function onError() {
-    console.log("Fail")
-}
-
 function getProducts() {
     $.ajax({
         type:'GET',
         url: '/products',
         // contentType: 'application/json'
         success: fillProducts,
-        error: onError
+        error: function () {
+            console.log("Fail while getting products")
+        }
     })
 }
 
 function deleteProduct(id) {
-    clear()
+    $.ajax({
+        type: 'DELETE',
+        url: '/deleteProduct?id='+id,
+        success: function () {
+            clear();
+            getProducts()
+        },
+        error: function () {
+            console.log("Fail while deleting product")
+        }
+    })
 }
 
 function clear() {
