@@ -53,3 +53,12 @@ function getProducts() {
         error: onError
     })
 }
+
+function deleteProduct(id) {
+    clear()
+}
+
+function clear() {
+    let box = $("#products");
+    box.empty()
+}
