@@ -17,7 +17,7 @@ class ProductService(
 
     private fun createResult(entity: Product): ProductDto {
         return ProductDto(
-            id = entity.id.toHexString(),
+            id = entity.id?.toHexString(),
             title = entity.title,
             description = entity.description,
             imgUrl = entity.imgUrl,
@@ -29,6 +29,18 @@ class ProductService(
     fun deleteProduct(id: String) {
         val objectId= ObjectId(id)
         productRepository.deleteById(objectId)
+    }
+
+    fun createProduct(product: ProductDto) {
+        val entity = Product(
+            title = product.title,
+            description = product.description,
+            imgUrl = product.imgUrl,
+            price = product.price,
+            vendorCode = product.vendorCode
+        )
+
+        productRepository.save(entity)
     }
 
 }

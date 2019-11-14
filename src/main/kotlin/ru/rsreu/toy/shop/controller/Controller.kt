@@ -1,9 +1,7 @@
 package ru.rsreu.toy.shop.controller
 
 import org.springframework.http.MediaType
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import ru.rsreu.toy.shop.dto.ProductDto
 import ru.rsreu.toy.shop.entity.Product
 import ru.rsreu.toy.shop.repository.ProductRepository
@@ -24,5 +22,10 @@ class Controller(
     @DeleteMapping(value = ["/deleteProduct"])
     fun deleteProduct(id: String) {
         productService.deleteProduct(id)
+    }
+
+    @PostMapping(value = ["/createProduct"])
+    fun createProduct(@RequestBody product: ProductDto){
+        productService.createProduct(product)
     }
 }
