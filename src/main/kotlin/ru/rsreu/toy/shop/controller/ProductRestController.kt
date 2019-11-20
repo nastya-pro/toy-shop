@@ -10,8 +10,8 @@ class ProductRestController(
     private val productService: ProductService
 ) {
 
-    @GetMapping(value = ["/products"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun products(): List<ProductDto> {
+    @GetMapping(value = ["/getProducts"], produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun getProducts(): List<ProductDto> {
         return productService.getProducts()
     }
 

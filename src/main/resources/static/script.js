@@ -43,7 +43,7 @@ function fillProducts(products) {
 function getProducts() {
     $.ajax({
         type:'GET',
-        url: '/products',
+        url: '/getProducts',
         // contentType: 'application/json'
         success: fillProducts,
         error: function () {
