@@ -13,10 +13,10 @@ class Controller(
     @PostMapping(value = ["/createProduct"])
     fun createProduct(product: ProductDto):String{
         productService.createProduct(product)
-        return "redirect:/index.html"
+        return "redirect:/"
     }
 
-    @GetMapping(value = ["/products"])
+    @GetMapping(value = ["/"])
     fun products():String{
         return "products"
     }
