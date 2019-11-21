@@ -1,13 +1,17 @@
+<%@ page contentType="text/html; charset = UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Славные игрушки</title>
-    <link rel="stylesheet" href="create.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/create.css" type="text/css" media="screen"/>
+    <jsp:useBean id="test" type="java.lang.String"/>
 </head>
 <body>
 <div>
     <h1>Создание товара</h1>
+    <h1><c:out value="${test}"/></h1>
     <form method="post" action="/createProduct" class="form">
         <div class="line">
             <label for="title">Название товара</label>
