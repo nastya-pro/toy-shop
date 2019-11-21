@@ -105,7 +105,7 @@
         <div>Артикул:<\%= vendorCode %></div>
         <div class="cost"><\%= price %> руб.</div>
         <button class="a_button delete" onclick="deleteProduct('<\%= id %>')">Удалить</button>
-        <button class="a_button edit">Редактировать</button>
+        <a class="a_button edit" href="/edit?id=<\%= id %>">Редактировать</a>
     </div>
 </script>
 </body>

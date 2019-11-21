@@ -33,7 +33,9 @@
             <label for="price">Стоимость</label>
             <input id="price" type="number" name="price" value="<c:out value="${product.price}"/>"/>
         </div>
-        <input type="submit" class="create" value="Создать товар"/>
+        <input type="submit" class="create" value="
+<c:if test="${product.id==null}">Создать товар</c:if>
+<c:if test="${product.id!=null}">Изменить товар</c:if>"/>
     </form>
 </div>
 </body>

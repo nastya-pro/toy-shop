@@ -1,21 +1,21 @@
 package ru.rsreu.toy.shop.service
 
 import org.bson.types.ObjectId
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import ru.rsreu.toy.shop.dto.ProductDto
 import ru.rsreu.toy.shop.entity.Product
 import ru.rsreu.toy.shop.repository.ProductRepository
-import java.util.*
 
 @Service
 class ProductService(
     private val productRepository: ProductRepository
 ) {
     fun getProducts(): List<ProductDto> {
-        return productRepository.findAll().map { createResult(it) }
+        return productRepository.findAll().map { convertToProductDto(it) }
     }
 
-    private fun createResult(entity: Product): ProductDto {
+    private fun convertToProductDto(entity: Product): ProductDto {
         return ProductDto(
             id = entity.id?.toHexString(),
             title = entity.title,
@@ -27,7 +27,7 @@ class ProductService(
     }
 
     fun deleteProduct(id: String) {
-        val objectId= ObjectId(id)
+        val objectId = ObjectId(id)
         productRepository.deleteById(objectId)
     }
 
@@ -41,6 +41,21 @@ class ProductService(
         )
 
         productRepository.save(entity)
+    }
+
+    fun findProduct(id: String):ProductDto? {
+        if (ObjectId.isValid(id)) {
+            val objectId = ObjectId(id)
+            val product = productRepository.findByIdOrNull(objectId)
+            if (product != null) {
+                val productDto = convertToProductDto(product)
+                return productDto
+            } else {
+                return null
+            }
+        } else {
+            return null
+        }
     }
 
 }
