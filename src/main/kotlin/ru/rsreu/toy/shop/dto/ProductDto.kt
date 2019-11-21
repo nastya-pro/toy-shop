@@ -14,5 +14,5 @@ data class ProductDto(
     @JsonProperty("vendorCode")
     val vendorCode: String,
     @JsonProperty("price")
-    val price: Number
+    val price: String
 )
