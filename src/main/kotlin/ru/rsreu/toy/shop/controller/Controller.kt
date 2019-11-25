@@ -5,6 +5,7 @@ import org.springframework.ui.ModelMap
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import ru.rsreu.toy.shop.dto.ProductDto
+import ru.rsreu.toy.shop.dto.UserDto
 import ru.rsreu.toy.shop.service.ProductService
 
 @Controller
@@ -39,5 +40,27 @@ class Controller(
         } else {
             throw ResourceNotFoundException()
         }
+    }
+
+    @GetMapping(value = ["/login"])
+    fun getLogin(): String {
+        return "login"
+    }
+
+    @PostMapping(value = ["/login"])
+    fun login(user: UserDto): String {
+//        val product = productService.findProduct(id)
+//        if (product!=null) {
+//            model.addAttribute("product", product)
+//            return "createProduct"
+//        } else {
+//            throw ResourceNotFoundException()
+//        }
+        return "redirect:/"
+    }
+
+    @GetMapping(value = ["/stocks"])
+    fun getStocks(): String {
+        return "createProduct"
     }
 }

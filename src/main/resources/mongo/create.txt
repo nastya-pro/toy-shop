@@ -7,3 +7,8 @@ db.PRODUCTS.insert({"title": "Пикачу","imgUrl": "img/Пикачу.jpg","de
 db.PRODUCTS.insert({"title": "Пингвинёнок", "imgUrl": "img/Пингвинёнок.jpg","description": "Мягкий пингвинёнок скрасит холодные и грустные вечера.", "vendorCode": "193278", "price": NumberInt(1500)});
 db.PRODUCTS.insert({"title": "Крот", "imgUrl":"img\Крот.jpg","description": "Все же помнят этого замечательного Крота из чешского мультфильма? Почему бы не приютить его у себя дома?", "vendorCode": "075683","price": NumberInt(1200)});
 db.PRODUCTS.insert({"title": "Панда", "imgUrl":"img\Панда.jpg","description": "Все панды милые и смешные.", "vendorCode": "038394","price": NumberInt(2200)});
+
+/*****************************************************************/
+/*Insert USERS*/
+/*****************************************************************/
+db.USERS.insert({"login":"Михаил43","password": "234184"})

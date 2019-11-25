@@ -20,7 +20,7 @@
             </div>
         </li>
         <li class="menu_item"><a href="/">Главная</a></li>
-        <li class="menu_item"><a href="stocks.html">Акции</a></li>
+        <li class="menu_item"><a href="stocks.jsp">Акции</a></li>
         <li class="menu_item"><a href="">Контакты</a></li>
         <li class="menu_item"><a href="entrance.html">Авторизация</a></li>
     </ul>
