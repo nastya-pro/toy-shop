@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Славные игрушки</title>
-    <link rel="stylesheet" href="/style.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/style/style.css" type="text/css" media="screen"/>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-    <script src="/script.js"></script>
+    <script src="/script/script.js"></script>
 </head>
 <body>
 <div class="menu_container">

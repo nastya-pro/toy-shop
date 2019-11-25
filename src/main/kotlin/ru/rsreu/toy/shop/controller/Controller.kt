@@ -47,18 +47,6 @@ class Controller(
         return "login"
     }
 
-    @PostMapping(value = ["/login"])
-    fun login(user: UserDto): String {
-//        val product = productService.findProduct(id)
-//        if (product!=null) {
-//            model.addAttribute("product", product)
-//            return "createProduct"
-//        } else {
-//            throw ResourceNotFoundException()
-//        }
-        return "redirect:/"
-    }
-
     @GetMapping(value = ["/stocks"])
     fun getStocks(): String {
         return "createProduct"

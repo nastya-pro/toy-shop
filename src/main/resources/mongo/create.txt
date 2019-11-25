@@ -11,4 +11,4 @@ db.PRODUCTS.insert({"title": "Панда", "imgUrl":"img\Панда.jpg","descri
 /*****************************************************************/
 /*Insert USERS*/
 /*****************************************************************/
-db.USERS.insert({"login":"Михаил43","password": "234184"})
+db.USERS.insert({"_id":"misha","password": "123456"})
