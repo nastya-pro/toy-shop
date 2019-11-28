@@ -33,6 +33,7 @@ class ProductService(
 
     fun createProduct(product: ProductDto) {
         val entity = Product(
+            id = product.id?.toObjectId(),
             title = product.title,
             description = product.description,
             imgUrl = product.imgUrl,
@@ -43,7 +44,7 @@ class ProductService(
         productRepository.save(entity)
     }
 
-    fun findProduct(id: String):ProductDto? {
+    fun findProduct(id: String): ProductDto? {
         if (ObjectId.isValid(id)) {
             val objectId = ObjectId(id)
             val product = productRepository.findByIdOrNull(objectId)
@@ -58,4 +59,12 @@ class ProductService(
         }
     }
 
+}
+
+fun String.toObjectId(): ObjectId? {
+    if (ObjectId.isValid(this)) {
+        return ObjectId(this)
+    } else {
+        return null
+    }
 }

@@ -14,7 +14,6 @@ class Controller(
 ) {
     @PostMapping(value = ["/createProduct"])
     fun createProduct(product: ProductDto): String {
-        //TODO написать функцию для редактирования
         productService.createProduct(product)
         return "redirect:/"
     }
@@ -32,11 +31,15 @@ class Controller(
     }
 
     @GetMapping(value = ["/edit"])
-    fun edit(id: String, model: ModelMap): String {
-        val product = productService.findProduct(id)
-        if (product!=null) {
-            model.addAttribute("product", product)
-            return "createProduct"
+    fun edit(id: String?, model: ModelMap): String {
+        if (id != null) {
+            val product = productService.findProduct(id)
+            if (product != null) {
+                model.addAttribute("product", product)
+                return "createProduct"
+            } else {
+                throw ResourceNotFoundException()
+            }
         } else {
             throw ResourceNotFoundException()
         }

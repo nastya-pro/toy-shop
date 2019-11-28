@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Славные игрушки</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/style/create.css" type="text/css" media="screen"/>
     <jsp:useBean id="product" type="ru.rsreu.toy.shop.dto.ProductDto" scope="request"/>
 </head>
@@ -13,6 +14,9 @@
 <div>
     <h1>Создание товара</h1>
     <form method="post" action="/createProduct" class="form">
+        <c:if test="${product.id!=null}">
+            <input type="hidden" name="id" value="<c:out value="${product.id}"/>"/>
+        </c:if>
         <div class="line">
             <label for="title">Название товара</label>
             <input id="title" type="text" name="title" value="<c:out value="${product.title}"/>"/>
@@ -28,7 +32,7 @@
         <div class="line">
             <label for="imgUrl" class="image_box">Загрузить картинку</label>
             <input id="imgUrl" type="text" name="imgUrl" value="<c:out value="${product.imgUrl}"/>"/>
-<!--            <input id="imgUrl" type="file" name="imgUrl" accept="image/*">-->
+            <!--            <input id="imgUrl" type="file" name="imgUrl" accept="image/*">-->
         </div>
         <div class="line">
             <label for="price">Стоимость</label>
