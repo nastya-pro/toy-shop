@@ -1,4 +1,4 @@
-package ru.rsreu.toy.shop.encoder
+package ru.rsreu.toy.shop.security
 
 import org.springframework.security.crypto.password.PasswordEncoder
 
