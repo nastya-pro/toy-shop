@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
-import ru.rsreu.toy.shop.enums.UserRolEnum
 import ru.rsreu.toy.shop.repository.UserRepository
 
 @Service
@@ -16,10 +15,9 @@ class UserDetailsServiceImpl(
 ): UserDetailsService {
 
     override fun loadUserByUsername(username: String): UserDetails {
-        val user =  userRepository.findByIdOrNull(username)
+        val user = userRepository.findByIdOrNull(username)
             ?: throw UsernameNotFoundException("User not found")
-        val roles = UserRolEnum.values()
-            .map { SimpleGrantedAuthority(it.name) }.toSet()
+        val roles = setOf(SimpleGrantedAuthority(user.role.name))
         return User(user.login, user.password, roles)
     }
 }

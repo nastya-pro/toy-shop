@@ -1,6 +1,7 @@
 package ru.rsreu.toy.shop.controller
 
 import org.springframework.http.MediaType
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import ru.rsreu.toy.shop.dto.ProductDto
 import ru.rsreu.toy.shop.service.ProductService
@@ -16,6 +17,7 @@ class ProductRestController(
     }
 
     @DeleteMapping(value = ["/deleteProduct"])
+    @PreAuthorize("hasAuthority('ADMIN')")
     fun deleteProduct(id: String) {
         productService.deleteProduct(id)
     }
