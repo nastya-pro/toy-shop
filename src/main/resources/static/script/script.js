@@ -22,11 +22,12 @@ let testProducts = [
     }
 ];
 
-function testFill(){
+function testFill() {
     fillProducts(testProducts)
 }
 
 window.onload = getProducts;
+
 // window.onload=testFill;
 
 function fillProducts(products) {
@@ -34,7 +35,7 @@ function fillProducts(products) {
     let productTemplateHtml = $("#product").html();
     let productTemplate = _.template(productTemplateHtml);
 
-    for(let i=0; i<products.length; i++) {
+    for (let i = 0; i < products.length; i++) {
         let filledTemplate = productTemplate(products[i]);
         box.append(filledTemplate);
     }
@@ -42,9 +43,9 @@ function fillProducts(products) {
 
 function getProducts() {
     $.ajax({
-        type:'GET',
-        url: '/getProducts',
-        // contentType: 'application/json'
+        type: 'GET',
+        url: '/getProducts' + window.location.search,
+        contentType: 'application/json',
         success: fillProducts,
         error: function () {
             console.log("Fail while getting products")
@@ -55,7 +56,7 @@ function getProducts() {
 function deleteProduct(id) {
     $.ajax({
         type: 'DELETE',
-        url: '/deleteProduct?id='+id,
+        url: '/deleteProduct?id=' + id,
         success: function () {
             clear();
             getProducts()
@@ -70,3 +71,14 @@ function clear() {
     let box = $("#products");
     box.empty()
 }
+
+$(function () {
+    $('#sort').on('change', function () {
+        const params = URI(window.location.search)
+            .removeSearch("search")
+            .addSearch("search", this.value);
+        window.history.pushState(null, null, params)
+        clear();
+        getProducts()
+    })
+});

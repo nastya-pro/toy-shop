@@ -12,7 +12,7 @@ class ProductRestController(
 ) {
 
     @GetMapping(value = ["/getProducts"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun getProducts(): List<ProductDto> {
+    fun getProducts(search: String?): List<ProductDto> {
         return productService.getProducts()
     }
 

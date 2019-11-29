@@ -45,6 +45,20 @@ body {
     background: radial-gradient(bisque, white);
 }
 
+.top_menu{
+    padding: 15px;
+    border: 2px brown solid;
+    border-radius: 30px;
+    background: radial-gradient(bisque, white);
+}
+
+.create-product{
+    padding: 15px;
+    border: 2px brown solid;
+    border-radius: 30px;
+    background: radial-gradient(bisque, white);
+}
+
 .a_button{
     border-radius: 15px;
     font-size: 1.1em;

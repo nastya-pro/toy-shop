@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/style/style.css" type="text/css" media="screen"/>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    <script src="/script/url.js"></script>
     <script src="/script/script.js"></script>
 </head>
 <body>
@@ -35,66 +36,24 @@
     </div>
     <div class="content">
         <h1>Товары</h1>
-        <div id="products">
-            <%--            <div class="tile">--%>
-            <%--              <h2>Мишка</h2>--%>
-            <%--              <div class="image_box">--%>
-            <%--                  <img src="img\Мишка.jpg" class="image"/>--%>
-            <%--              </div>--%>
-            <%--              <div class="text"> Милый плюшевый мишка станет лучшим другом вашему ребенку.</div>--%>
-            <%--              <div>Артикул:023498</div>--%>
-            <%--              <div class="cost">1700 руб.</div>--%>
-            <%--              <button class="a_button delete">Удалить</button>--%>
-            <%--              <button class="a_button edit">Редактировать</button>--%>
-            <%--          </div>--%>
-            <!--<div class="tile">
-                <h2>Пикачу</h2>
-                <div class="image_box">
-                    <img src="img\Пикачу.jpg" class="image"/>
-                </div>
-                <div class="text"> Детектив Пикачу поможет найти сладости и конечно же кофе.</div>
-                <div>Артикул:190384</div>
-                <div class="cost">987 руб.</div>
-                <button class="a_button delete">Удалить</button>
-                <button class="a_button edit">Редактировать</button>
-            </div>
-            <div class="tile">
-                <h2>Пингвинёнок</h2>
-                <div class="image_box">
-                    <img src="img\Пингвинёнок.jpg" class="image"/>
-                </div>
-                <div class="text"> Мягкий пингвинёнок скрасит холодные и грустные вечера.</div>
-                <div>Артикул:193278</div>
-                <div class="cost">1500 руб.</div>
-                <button class="a_button delete">Удалить</button>
-                <button class="a_button edit">Редактировать</button>
-            </div>
-            <div class="tile">
-                <h2>Крот</h2>
-                <div class="image_box">
-                    <img src="img\Крот.jpg" class="image"/>
-                </div>
-                <div class="text"> Все же помнят этого замечательного Крота? Как его не взять к себе домой?</div>
-                <div>Артикул:075683</div>
-                <div class="cost">1200 руб.</div>
-                <button class="a_button delete">Удалить</button>
-                <button class="a_button edit">Редактировать</button>
-            </div>
-            <div class="tile">
-                <h2>Панда</h2>
-                <div class="image_box">
-                    <img src="img\Панда.jpg" class="image"/>
-                </div>
-                <div class="text"> Все панды милые и смешные.</div>
-                <div>Артикул:038394</div>
-                <div class="cost">2200 руб.</div>
-                <button class="a_button delete">Удалить</button>
-                <button class="a_button edit">Редактировать</button>
-            </div> -->
+        <div class="top_menu">
+            <label for="sort">Сортировать:</label>
+            <select id="sort" onchange="">
+                <option value="default">по умолчанию</option>
+                <option value="name">по имени</option>
+                <option value="priceAsc">по возрастанию цены</option>
+                <option value="priceDesc">по убыванию цены</option>
+            </select>
         </div>
+        <div id="products">
+        </div>
+        <sec:authorize access="hasAuthority('ADMIN')">
+        <div class="create-product">
+            <a class="a_button btn-success" href="/create">Добавить товар</a>
+        </div>
+        </sec:authorize>
     </div>
 </div>
-
 <script type="text/html" id="product">
     <div class="tile">
         <h2><\%= title %></h2>
