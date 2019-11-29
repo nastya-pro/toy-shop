@@ -11,8 +11,14 @@ import ru.rsreu.toy.shop.repository.ProductRepository
 class ProductService(
     private val productRepository: ProductRepository
 ) {
-    fun getProducts(): List<ProductDto> {
-        return productRepository.findAll().map { convertToProductDto(it) }
+    fun getProducts(sort: String): List<ProductDto> {
+        val products = productRepository.findAll().map { convertToProductDto(it) }
+        return when (sort) {
+            "name" -> products.sortedBy { it.title }
+            "priceAsc" -> products.sortedBy { it.price }
+            "priceDesc" -> products.sortedByDescending { it.price }
+            else -> products
+        }
     }
 
     private fun convertToProductDto(entity: Product): ProductDto {

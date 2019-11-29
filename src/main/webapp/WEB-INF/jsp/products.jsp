@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset = UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -39,10 +40,10 @@
         <div class="top_menu">
             <label for="sort">Сортировать:</label>
             <select id="sort" onchange="">
-                <option value="default">по умолчанию</option>
-                <option value="name">по имени</option>
-                <option value="priceAsc">по возрастанию цены</option>
-                <option value="priceDesc">по убыванию цены</option>
+                <option value="default" <c:if test="${param.sort=='default'}">selected</c:if>>по умолчанию</option>
+                <option value="name" <c:if test="${param.sort=='name'}">selected</c:if>>по имени</option>
+                <option value="priceAsc" <c:if test="${param.sort=='priceAsc'}">selected</c:if>>по возрастанию цены</option>
+                <option value="priceDesc" <c:if test="${param.sort=='priceDesc'}">selected</c:if>>по убыванию цены</option>
             </select>
         </div>
         <div id="products">

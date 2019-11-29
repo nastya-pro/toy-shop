@@ -75,8 +75,8 @@ function clear() {
 $(function () {
     $('#sort').on('change', function () {
         const params = URI(window.location.search)
-            .removeSearch("search")
-            .addSearch("search", this.value);
+            .removeSearch("sort")
+            .addSearch("sort", this.value);
         window.history.pushState(null, null, params)
         clear();
         getProducts()

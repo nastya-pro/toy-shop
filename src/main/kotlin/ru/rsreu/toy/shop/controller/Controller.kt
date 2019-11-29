@@ -15,8 +15,16 @@ class Controller(
     @PostMapping(value = ["/createProduct"])
     @PreAuthorize("hasAuthority('ADMIN')")
     fun createProduct(product: ProductDto): String {
-        productService.createProduct(product)
+        productService.createProduct(trimSpaces(product))
         return "redirect:/"
+    }
+
+    private fun trimSpaces(product: ProductDto): ProductDto {
+        return product.copy(
+            title = product.title.trim(),
+            description = product.description.trim(),
+            vendorCode = product.vendorCode.trim()
+        )
     }
 
     @GetMapping(value = ["/"])
@@ -27,7 +35,7 @@ class Controller(
     @GetMapping(value = ["/create"])
     @PreAuthorize("hasAuthority('ADMIN')")
     fun create(model: ModelMap): String {
-        val product = ProductDto(null, "", "", "", "", "")
+        val product = ProductDto(null, "", "", "", "", -1)
         model.addAttribute("product", product)
         return "createProduct"
     }

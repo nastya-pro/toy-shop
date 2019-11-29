@@ -12,8 +12,8 @@ class ProductRestController(
 ) {
 
     @GetMapping(value = ["/getProducts"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun getProducts(search: String?): List<ProductDto> {
-        return productService.getProducts()
+    fun getProducts(sort: String?): List<ProductDto> {
+        return productService.getProducts(sort ?: "default")
     }
 
     @DeleteMapping(value = ["/deleteProduct"])

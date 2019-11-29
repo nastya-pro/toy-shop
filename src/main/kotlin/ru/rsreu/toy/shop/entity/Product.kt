@@ -14,5 +14,5 @@ data class Product(
     val imgUrl: String,
     val description: String,
     val vendorCode: String,
-    val price: String
+    val price: Long
 )
