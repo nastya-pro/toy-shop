@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Славные игрушки</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/style/style.css" type="text/css" media="screen"/>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
@@ -17,7 +18,7 @@
     <ul class="menu">
         <li class="title menu_item">
             <div>
-                <img src="img\logo.jpg" alt="Логотип"/>
+                <img src="image\logo.jpg" alt="Логотип"/>
                 <span>Славные игрушки</span>
             </div>
         </li>
@@ -25,6 +26,7 @@
         <li class="menu_item"><a href="stocks.jsp">Акции</a></li>
         <li class="menu_item"><a href="">Контакты</a></li>
         <li class="menu_item">Добро пожаловать, <sec:authentication property="principal.firstName"/>!</li>
+        <a href="/logout" class="btn btn-outline-danger">Выйти</a>
     </ul>
 </div>
 <div class="main">
@@ -45,14 +47,14 @@
                 <option value="priceAsc" <c:if test="${param.sort=='priceAsc'}">selected</c:if>>по возрастанию цены</option>
                 <option value="priceDesc" <c:if test="${param.sort=='priceDesc'}">selected</c:if>>по убыванию цены</option>
             </select>
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <div>
+                    <a class="btn-success btn create btn-lg" href="/create">Добавить товар</a>
+                </div>
+            </sec:authorize>
         </div>
         <div id="products">
         </div>
-        <sec:authorize access="hasAuthority('ADMIN')">
-        <div class="create-product">
-            <a class="a_button btn-success" href="/create">Добавить товар</a>
-        </div>
-        </sec:authorize>
     </div>
 </div>
 <script type="text/html" id="product">
@@ -65,8 +67,8 @@
         <div>Артикул:<\%= vendorCode %></div>
         <div class="cost"><\%= price %> руб.</div>
         <sec:authorize access="hasAuthority('ADMIN')">
-            <button class="a_button delete" onclick="deleteProduct('<\%= id %>')">Удалить</button>
-            <a class="a_button edit" href="/edit?id=<\%= id %>">Редактировать</a>
+            <button class="btn btn-danger button" onclick="deleteProduct('<\%= id %>')">Удалить</button>
+            <a class="btn btn-success button" href="/edit?id=<\%= id %>">Редактировать</a>
         </sec:authorize>
     </div>
 </script>

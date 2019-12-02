@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.ModelMap
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.multipart.MultipartFile
+import ru.rsreu.toy.shop.dto.ChangeProductDto
 import ru.rsreu.toy.shop.dto.ProductDto
 import ru.rsreu.toy.shop.service.ProductService
 
@@ -14,7 +17,17 @@ class Controller(
 ) {
     @PostMapping(value = ["/createProduct"])
     @PreAuthorize("hasAuthority('ADMIN')")
-    fun createProduct(product: ProductDto): String {
+    fun createProduct(
+        @RequestParam id: String?,
+        @RequestParam title: String,
+        @RequestParam("img") img: MultipartFile,
+        @RequestParam description: String,
+        @RequestParam vendorCode: String,
+        @RequestParam price: Long
+    ): String {
+        //ToDo UpdateProduct
+        val urlImg = productService.saveImg(img)
+        val product = ProductDto(id, title, urlImg, description, vendorCode, price)
         productService.createProduct(trimSpaces(product))
         return "redirect:/"
     }
