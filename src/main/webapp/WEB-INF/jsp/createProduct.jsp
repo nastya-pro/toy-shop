@@ -12,7 +12,14 @@
 <body>
 <div>
     <h1>Создание товара</h1>
-    <form method="post" enctype="multipart/form-data" action="/createProduct" class="form">
+    <form method="post" enctype="multipart/form-data" action="
+    <c:if test="${product.id==null}">
+    /createProduct
+    </c:if>
+    <c:if test="${product.id!=null}">
+    /updateProduct
+    </c:if>
+" class="form">
         <c:if test="${product.id!=null}">
             <input type="hidden" name="id" class="form-control" value="<c:out value="${product.id}"/>"/>
         </c:if>

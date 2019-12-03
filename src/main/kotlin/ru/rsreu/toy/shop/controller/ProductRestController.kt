@@ -5,13 +5,14 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.multipart.MultipartFile
 import ru.rsreu.toy.shop.dto.ProductDto
+import ru.rsreu.toy.shop.service.ImageService
 import ru.rsreu.toy.shop.service.ProductService
 
 @RestController
 class ProductRestController(
-    private val productService: ProductService
+    private val productService: ProductService,
+    private val imageService: ImageService
 ) {
 
     @GetMapping(value = ["/getProducts"], produces = [MediaType.APPLICATION_JSON_VALUE])
@@ -28,7 +29,6 @@ class ProductRestController(
     @GetMapping(value = ["/img/{id}"])
     @ResponseBody
     fun getImg(@PathVariable id:String): ResponseEntity<InputStreamResource> {
-        return productService.getImg(id)
+        return imageService.getImg(id)
     }
-
 }

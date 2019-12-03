@@ -11,7 +11,7 @@ data class Product(
     @Field("_id")
     val id: ObjectId?=null,
     val title: String,
-    val imgUrl: String,
+    val imgId: ObjectId,
     val description: String,
     val vendorCode: String,
     val price: Long
