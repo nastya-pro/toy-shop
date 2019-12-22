@@ -12,13 +12,13 @@ import ru.rsreu.toy.shop.service.ImageService
 import ru.rsreu.toy.shop.service.ProductService
 
 @Controller
-class Controller(
+open class Controller(
     private val productService: ProductService,
     private val imageService: ImageService
 ) {
     @PostMapping(value = ["/createProduct"])
     @PreAuthorize("hasAuthority('ADMIN')")
-    fun createProduct(
+    open fun createProduct(
         @RequestParam title: String,
         @RequestParam("img") img: MultipartFile,
         @RequestParam description: String,
@@ -32,7 +32,7 @@ class Controller(
 
     @PostMapping(value = ["/updateProduct"])
     @PreAuthorize("hasAuthority('ADMIN')")
-    fun updateProduct(
+    open fun updateProduct(
         @RequestParam id: String,
         @RequestParam title: String,
         @RequestParam("img") img: MultipartFile,
@@ -52,13 +52,13 @@ class Controller(
     }
 
     @GetMapping(value = ["/"])
-    fun products(): String {
+    open fun products(): String {
         return "products"
     }
 
     @GetMapping(value = ["/create"])
     @PreAuthorize("hasAuthority('ADMIN')")
-    fun create(model: ModelMap): String {
+    open fun create(model: ModelMap): String {
         val product = ProductDto(null, "", "", "", "", -1)
         model.addAttribute("product", product)
         return "createProduct"
@@ -66,7 +66,7 @@ class Controller(
 
     @GetMapping(value = ["/edit"])
     @PreAuthorize("hasAuthority('ADMIN')")
-    fun edit(id: String?, model: ModelMap): String {
+    open fun edit(id: String?, model: ModelMap): String {
         if (id != null) {
             val product = productService.findProduct(id)
             model.addAttribute("product", product)
@@ -77,12 +77,12 @@ class Controller(
     }
 
     @GetMapping(value = ["/login"])
-    fun getLogin(): String {
+    open fun getLogin(): String {
         return "login"
     }
 
     @GetMapping(value = ["/stocks"])
-    fun getStocks(): String {
+    open fun getStocks(): String {
         return "createProduct"
     }
 }

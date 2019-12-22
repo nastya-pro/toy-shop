@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset = UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link rel="stylesheet" href="/style/menu.css" type="text/css" media="screen"/>
 <div class="menu_container">
     <div class="menu">

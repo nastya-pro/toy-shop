@@ -33,13 +33,17 @@ body {
 
 .tile {
     width: 329px;
-    height: 600px;
+    height: 530px;
     margin: 15px;
     border: 2px brown solid;
     border-radius: 30px;
     display: inline-block;
     padding: 30px;
     background: radial-gradient(bisque, white);
+}
+
+.tile_admin {
+    height: 600px;
 }
 
 .top_menu{

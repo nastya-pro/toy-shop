@@ -31,14 +31,13 @@
                 <option value="priceDesc" <c:if test="${param.sort=='priceDesc'}">selected</c:if>>по убыванию цены
                 </option>
             </select>
-
         </div>
         <div id="products">
         </div>
     </div>
 </div>
 <script type="text/html" id="product">
-    <div class="tile">
+    <div class="tile<sec:authorize access="hasAuthority('ADMIN')"> tile_admin</sec:authorize>">
         <h2><\%= title %></h2>
         <div class="image_box">
             <img src="<\%= imgUrl %>" class="image"/>
