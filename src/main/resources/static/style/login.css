@@ -1,3 +1,7 @@
+body {
+    background: lightgray;
+}
+
 .form-signin {
     width: 100%;
     max-width: 330px;
@@ -6,7 +10,13 @@
 }
 
 .form {
-    margin-top: 150px;
+    width: 500px;
+    margin: auto;
+    margin-top: 80px;
+
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
 }
 
 .text-center {
