@@ -40,7 +40,7 @@
                 <label for="imgUrl">Загрузить картинку</label>
                 <div class="custom-file">
                     <label for="imgUrl" class="custom-file-label">Загрузить картинку</label>
-                    <input id="imgUrl" class="custom-control-input" type="file" name="img" accept="image/*" required>
+                    <input id="imgUrl" class="custom-control-input" type="file" name="img" accept="image/*"<c:if test="${product.id==null}"> required</c:if>>
                 </div>
             </div>
             <div class="form-group">
