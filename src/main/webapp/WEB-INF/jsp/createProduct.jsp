@@ -11,15 +11,15 @@
 </head>
 <body>
 <div>
-    <h1>Создание товара</h1>
-    <form method="post" enctype="multipart/form-data" action="
-    <c:if test="${product.id==null}">
-    /createProduct
-    </c:if>
-    <c:if test="${product.id!=null}">
-    /updateProduct
-    </c:if>
-" class="form">
+    <h1>
+        <c:if test="${product.id==null}">
+            Создание товара
+        </c:if>
+        <c:if test="${product.id!=null}">
+            Обновление товара
+        </c:if>
+    </h1>
+    <form method="post" enctype="multipart/form-data" action="<c:if test="${product.id==null}">/createProduct</c:if><c:if test="${product.id!=null}">/updateProduct</c:if>" class="form">
         <c:if test="${product.id!=null}">
             <input type="hidden" name="id" class="form-control" value="<c:out value="${product.id}"/>"/>
         </c:if>
@@ -42,16 +42,9 @@
         </div>
         <div class="line">
             <label for="price">Стоимость</label>
-            <input id="price" type="number" name="price" value="
-<c:if test="${product.price>=0}">
-    <c:out value="${product.price}"/>
-</c:if>
-"/>
+            <input id="price" type="number" name="price" value="<c:if test="${product.price>=0}"><c:out value="${product.price}"/></c:if>"/>
         </div>
-        <input type="submit" class="btn btn-success btn-lg" value="
-<c:if test="${product.id==null}">Создать товар</c:if>
-<c:if test="${product.id!=null}">Изменить товар</c:if>
-"/>
+        <input type="submit" class="btn btn-success btn-lg" value="<c:if test="${product.id==null}">Создать товар</c:if><c:if test="${product.id!=null}">Изменить товар</c:if>"/>
     </form>
 </div>
 </body>

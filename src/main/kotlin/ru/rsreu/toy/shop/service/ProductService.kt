@@ -3,6 +3,7 @@ package ru.rsreu.toy.shop.service
 import org.bson.types.ObjectId
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import ru.rsreu.toy.shop.controller.ResourceNotFoundException
 import ru.rsreu.toy.shop.dto.ProductDto
 import ru.rsreu.toy.shop.entity.Product
 import ru.rsreu.toy.shop.repository.ProductRepository
@@ -33,7 +34,6 @@ class ProductService(
     }
 
     fun deleteProduct(id: String) {
-        //ToDo удалять изображения
         val objectId = id.toObjectId()
         productRepository.deleteById(objectId)
     }
@@ -45,7 +45,30 @@ class ProductService(
         vendorCode: String,
         price: Long
     ) {
+        processProduct(null, title, imgId, description, vendorCode, price)
+    }
+
+    fun updateProduct(
+        id: String,
+        title: String,
+        imgId: ObjectId,
+        description: String,
+        vendorCode: String,
+        price: Long
+    ) {
+        processProduct(id.toObjectId(), title, imgId, description, vendorCode, price)
+    }
+
+    private fun processProduct(
+        id: ObjectId?,
+        title: String,
+        imgId: ObjectId,
+        description: String,
+        vendorCode: String,
+        price: Long
+    ) {
         val entity = Product(
+            id = id,
             title = title,
             description = description,
             imgId = imgId,
@@ -56,28 +79,23 @@ class ProductService(
         productRepository.save(entity)
     }
 
-    fun findProduct(id: String): ProductDto? {
+    fun findProduct(id: String): ProductDto {
         val objectId = id.toObjectId()
-        val product = productRepository.findByIdOrNull(objectId)
-        if (product != null) {
-            val productDto = convertToProductDto(product)
-            return productDto
-        } else {
-            return null
-        }
+        val product = productRepository.findByIdOrNull(objectId) ?: throw ResourceNotFoundException()
+        return convertToProductDto(product)
     }
 
-    fun getImageId(productId: String): ObjectId? {
+    fun getImageId(productId: String): ObjectId {
         val id = productId.toObjectId()
-        val product = productRepository.findByIdOrNull(id)
-        return product?.imgId
+        val product = productRepository.findByIdOrNull(id) ?: throw ResourceNotFoundException()
+        return product.imgId
     }
-}
 
-fun String.toObjectId(): ObjectId? {
-    if (ObjectId.isValid(this)) {
-        return ObjectId(this)
-    } else {
-        return null
+    private fun String.toObjectId(): ObjectId {
+        if (ObjectId.isValid(this)) {
+            return ObjectId(this)
+        } else {
+            throw ResourceNotFoundException()
+        }
     }
 }

@@ -32,4 +32,8 @@ class ImageService (
             .contentType(MediaType.parseMediaType(img.metadata.getString("contentType")))
             .body(InputStreamResource(operations.getResource(img).inputStream))
     }
+
+    fun deleteImg(id: ObjectId) {
+        gridFsTemplate.delete(Query(Criteria.where("_id").`is`(id)))
+    }
 }

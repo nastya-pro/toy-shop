@@ -35,18 +35,19 @@ class Controller(
     fun updateProduct(
         @RequestParam id: String,
         @RequestParam title: String,
-        @RequestParam("img") img: MultipartFile?,
+        @RequestParam("img") img: MultipartFile,
         @RequestParam description: String,
         @RequestParam vendorCode: String,
         @RequestParam price: Long
     ): String {
-        //ToDo UpdateProduct
-        if (img!= null){
-
+        val imgId = if (!img.isEmpty){
+            val oldImgId = productService.getImageId(id)
+            imageService.deleteImg(oldImgId)
+            imageService.saveImg(img)
+        } else {
+            productService.getImageId(id)
         }
-//        val urlImg = imageService.saveImg(img)
-//        val product = ProductDto(id, title, urlImg, description, vendorCode, price)
-//        productService.createProduct(trimSpaces(product))
+        productService.updateProduct(id, title.trim(), imgId, description.trim(), vendorCode, price)
         return "redirect:/"
     }
 
@@ -68,12 +69,8 @@ class Controller(
     fun edit(id: String?, model: ModelMap): String {
         if (id != null) {
             val product = productService.findProduct(id)
-            if (product != null) {
-                model.addAttribute("product", product)
-                return "createProduct"
-            } else {
-                throw ResourceNotFoundException()
-            }
+            model.addAttribute("product", product)
+            return "createProduct"
         } else {
             throw ResourceNotFoundException()
         }

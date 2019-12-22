@@ -23,6 +23,8 @@ class ProductRestController(
     @DeleteMapping(value = ["/deleteProduct"])
     @PreAuthorize("hasAuthority('ADMIN')")
     fun deleteProduct(id: String) {
+        val imgId = productService.getImageId(id)
+        imageService.deleteImg(imgId)
         productService.deleteProduct(id)
     }
 
