@@ -15,31 +15,26 @@
 </head>
 <body>
 <div class="menu_container">
-    <%--    <ul class="menu">--%>
     <div class="menu">
-        <%--        <li class="title menu_item">--%>
         <a href="/" class="title">
-            <%--                <div>--%>
             <img src="image\logo.jpg" alt="Логотип"/>
             <span>Славные игрушки</span>
-            <%--                </div>--%>
         </a>
-        <%--        </div>--%>
-        <%--        </li>--%>
-        <%--        <li class="menu_item">Главная</li>--%>
-        <%--        <li class="menu_item"><a href="stocks.jsp">Акции</a></li>--%>
-        <%--        <li class="menu_item"><a href="">Контакты</a></li>--%>
         <div class="right_menu">
             <span class="right_menu_item username">Добро пожаловать, <sec:authentication property="principal.firstName"/>!</span>
             <a href="/logout" class="btn btn-outline-danger logout">Выйти</a></span>
         </div>
-        <%--    </ul>--%>
     </div>
 </div>
 <div class="main">
     <div class="content">
         <h1>Товары</h1>
         <div class="top_menu">
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <%--                <div>--%>
+                <a class="btn-success btn create btn-lg" href="/create">Добавить товар</a>
+                <%--                </div>--%>
+            </sec:authorize>
             <label for="sort">Сортировать:</label>
             <select id="sort" onchange="">
                 <option value="default" <c:if test="${param.sort=='default'}">selected</c:if>>по умолчанию</option>
@@ -49,11 +44,7 @@
                 <option value="priceDesc" <c:if test="${param.sort=='priceDesc'}">selected</c:if>>по убыванию цены
                 </option>
             </select>
-            <sec:authorize access="hasAuthority('ADMIN')">
-                <div>
-                    <a class="btn-success btn create btn-lg" href="/create">Добавить товар</a>
-                </div>
-            </sec:authorize>
+
         </div>
         <div id="products">
         </div>
