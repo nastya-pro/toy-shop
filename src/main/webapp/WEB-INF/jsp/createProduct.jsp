@@ -37,7 +37,6 @@
         </div>
         <div class="line">
             <label for="imgUrl" class="image_box">Загрузить картинку</label>
-<%--            <input id="imgUrl" type="text" name="imgUrl" value="<c:out value="${product.imgUrl}"/>"/>--%>
             <input id="imgUrl" type="file" name="img" accept="image/*">
         </div>
         <div class="line">

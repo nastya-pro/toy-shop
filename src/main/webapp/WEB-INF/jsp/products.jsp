@@ -15,28 +15,28 @@
 </head>
 <body>
 <div class="menu_container">
-    <ul class="menu">
-        <li class="title menu_item">
-            <div>
-                <img src="image\logo.jpg" alt="Логотип"/>
-                <span>Славные игрушки</span>
-            </div>
-        </li>
-        <li class="menu_item"><a href="/">Главная</a></li>
-        <li class="menu_item"><a href="stocks.jsp">Акции</a></li>
-        <li class="menu_item"><a href="">Контакты</a></li>
-        <li class="menu_item">Добро пожаловать, <sec:authentication property="principal.firstName"/>!</li>
-        <a href="/logout" class="btn btn-outline-danger">Выйти</a>
-    </ul>
+    <%--    <ul class="menu">--%>
+    <div class="menu">
+        <%--        <li class="title menu_item">--%>
+        <a href="/" class="title">
+            <%--                <div>--%>
+            <img src="image\logo.jpg" alt="Логотип"/>
+            <span>Славные игрушки</span>
+            <%--                </div>--%>
+        </a>
+        <%--        </div>--%>
+        <%--        </li>--%>
+        <%--        <li class="menu_item">Главная</li>--%>
+        <%--        <li class="menu_item"><a href="stocks.jsp">Акции</a></li>--%>
+        <%--        <li class="menu_item"><a href="">Контакты</a></li>--%>
+        <div class="right_menu">
+            <span class="right_menu_item username">Добро пожаловать, <sec:authentication property="principal.firstName"/>!</span>
+            <a href="/logout" class="btn btn-outline-danger logout">Выйти</a></span>
+        </div>
+        <%--    </ul>--%>
+    </div>
 </div>
 <div class="main">
-    <div class="search">
-        <ul>
-            <!--<li class="menu_right">-->
-            <!--<label>Поиск: <input type="text" class="top_right"/></label>-->
-            <!--</li>-->
-        </ul>
-    </div>
     <div class="content">
         <h1>Товары</h1>
         <div class="top_menu">
@@ -44,8 +44,10 @@
             <select id="sort" onchange="">
                 <option value="default" <c:if test="${param.sort=='default'}">selected</c:if>>по умолчанию</option>
                 <option value="name" <c:if test="${param.sort=='name'}">selected</c:if>>по имени</option>
-                <option value="priceAsc" <c:if test="${param.sort=='priceAsc'}">selected</c:if>>по возрастанию цены</option>
-                <option value="priceDesc" <c:if test="${param.sort=='priceDesc'}">selected</c:if>>по убыванию цены</option>
+                <option value="priceAsc" <c:if test="${param.sort=='priceAsc'}">selected</c:if>>по возрастанию цены
+                </option>
+                <option value="priceDesc" <c:if test="${param.sort=='priceDesc'}">selected</c:if>>по убыванию цены
+                </option>
             </select>
             <sec:authorize access="hasAuthority('ADMIN')">
                 <div>
