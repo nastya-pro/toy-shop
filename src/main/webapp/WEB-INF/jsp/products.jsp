@@ -14,26 +14,13 @@
     <script src="/script/script.js"></script>
 </head>
 <body>
-<div class="menu_container">
-    <div class="menu">
-        <a href="/" class="title">
-            <img src="image\logo.jpg" alt="Логотип"/>
-            <span>Славные игрушки</span>
-        </a>
-        <div class="right_menu">
-            <span class="right_menu_item username">Добро пожаловать, <sec:authentication property="principal.firstName"/>!</span>
-            <a href="/logout" class="btn btn-outline-danger logout">Выйти</a></span>
-        </div>
-    </div>
-</div>
+<%@include file="menu.jsp" %>
 <div class="main">
     <div class="content">
         <h1>Товары</h1>
         <div class="top_menu">
             <sec:authorize access="hasAuthority('ADMIN')">
-                <%--                <div>--%>
                 <a class="btn-success btn create btn-lg" href="/create">Добавить товар</a>
-                <%--                </div>--%>
             </sec:authorize>
             <label for="sort">Сортировать:</label>
             <select id="sort" onchange="">

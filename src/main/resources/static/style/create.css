@@ -2,17 +2,23 @@ body {
     background: lightgray;
 }
 
-.form{
+.main {
     background: white;
     border-radius: 20px;
     font-size: 1.3em;
     margin: auto;
-    width: 50%;
+    width: 1000px;
+    margin-top: 80px;
 }
 
-.line{
-    margin: auto;
+.header {
     text-align: center;
+    border-bottom: lightgray 1px solid;
+    padding: 20px;
+}
+
+.form {
+    padding: 20px;
 }
 
 .image_box{
@@ -24,5 +30,9 @@ body {
 .text {
     text-align: center;
     padding: 20px;
+}
+
+.custom-file-label::after {
+    content: "Выбрать";
 }
 
