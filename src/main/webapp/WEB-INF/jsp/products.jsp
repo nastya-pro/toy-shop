@@ -36,6 +36,7 @@
         </div>
     </div>
 </div>
+<%@include file="footer.jsp" %>
 <script type="text/html" id="product">
     <div class="tile<sec:authorize access="hasAuthority('ADMIN')"> tile_admin</sec:authorize>">
         <h2><\%= title %></h2>
