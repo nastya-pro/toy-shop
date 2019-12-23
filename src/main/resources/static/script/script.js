@@ -22,15 +22,16 @@ let testProducts = [
     }
 ];
 
-function testFill() {
-    fillProducts(testProducts)
-}
+// function testFill() {
+//     fillProducts(testProducts)
+// }
 
 window.onload = getProducts;
 
 // window.onload=testFill;
 
 function fillProducts(products) {
+    clear();
     let box = $("#products");
     let productTemplateHtml = $("#product").html();
     let productTemplate = _.template(productTemplateHtml);
@@ -48,7 +49,7 @@ function getProducts() {
         contentType: 'application/json',
         success: fillProducts,
         error: function () {
-            console.log("Fail while getting products")
+            alert("Fail while getting products")
         }
     })
 }
@@ -57,10 +58,7 @@ function deleteProduct(id) {
     $.ajax({
         type: 'DELETE',
         url: '/deleteProduct?id=' + id,
-        success: function () {
-            clear();
-            getProducts()
-        },
+        success: getProducts,
         error: function () {
             console.log("Fail while deleting product")
         }
@@ -77,8 +75,7 @@ $(function () {
         const params = URI(window.location.search)
             .removeSearch("sort")
             .addSearch("sort", this.value);
-        window.history.pushState(null, null, params)
-        clear();
+        window.history.pushState(null, null, params);
         getProducts()
     })
 });
