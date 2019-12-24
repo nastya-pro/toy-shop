@@ -77,5 +77,5 @@ $(function () {
             .addSearch("sort", this.value);
         window.history.pushState(null, null, params);
         getProducts()
-    })
+})
 });
