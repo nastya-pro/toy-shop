@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.multipart.MultipartFile
 import ru.rsreu.toy.shop.dto.ProductDto
+import ru.rsreu.toy.shop.dto.UpdateProductDto
 import ru.rsreu.toy.shop.service.ImageService
 import ru.rsreu.toy.shop.service.ProductService
 
@@ -26,7 +27,8 @@ open class Controller(
         @RequestParam price: Long
     ): String {
         val imageId = imageService.saveImg(img)
-        productService.createProduct(title.trim(), imageId, description.trim(), vendorCode, price)
+        val product = UpdateProductDto(title.trim(), imageId, description.trim(), vendorCode, price)
+        productService.createProduct(product)
         return "redirect:/"
     }
 
@@ -47,7 +49,8 @@ open class Controller(
         } else {
             productService.getImageId(id)
         }
-        productService.updateProduct(id, title.trim(), imgId, description.trim(), vendorCode, price)
+        val product = UpdateProductDto(title.trim(), imgId, description.trim(), vendorCode, price)
+        productService.updateProduct(id, product)
         return "redirect:/"
     }
 

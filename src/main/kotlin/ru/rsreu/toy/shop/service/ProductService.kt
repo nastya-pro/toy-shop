@@ -5,6 +5,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import ru.rsreu.toy.shop.controller.ResourceNotFoundException
 import ru.rsreu.toy.shop.dto.ProductDto
+import ru.rsreu.toy.shop.dto.UpdateProductDto
 import ru.rsreu.toy.shop.entity.Product
 import ru.rsreu.toy.shop.repository.ProductRepository
 
@@ -38,42 +39,21 @@ class ProductService(
         productRepository.deleteById(objectId)
     }
 
-    fun createProduct(
-        title: String,
-        imgId: ObjectId,
-        description: String,
-        vendorCode: String,
-        price: Long
-    ) {
-        processProduct(null, title, imgId, description, vendorCode, price)
-    }
+    fun createProduct(product: UpdateProductDto) = processProduct(null, product)
 
-    fun updateProduct(
-        id: String,
-        title: String,
-        imgId: ObjectId,
-        description: String,
-        vendorCode: String,
-        price: Long
-    ) {
-        processProduct(id.toObjectId(), title, imgId, description, vendorCode, price)
-    }
+    fun updateProduct(id: String, product: UpdateProductDto) = processProduct(id.toObjectId(), product)
 
     private fun processProduct(
         id: ObjectId?,
-        title: String,
-        imgId: ObjectId,
-        description: String,
-        vendorCode: String,
-        price: Long
+        product: UpdateProductDto
     ) {
         val entity = Product(
             id = id,
-            title = title,
-            description = description,
-            imgId = imgId,
-            price = price,
-            vendorCode = vendorCode
+            title = product.title,
+            description = product.description,
+            imgId = product.imageId,
+            price = product.price,
+            vendorCode = product.vendorCode
         )
 
         productRepository.save(entity)
