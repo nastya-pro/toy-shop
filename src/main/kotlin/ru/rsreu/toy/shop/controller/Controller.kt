@@ -83,9 +83,4 @@ open class Controller(
     open fun getLogin(): String {
         return "login"
     }
-
-    @GetMapping(value = ["/stocks"])
-    open fun getStocks(): String {
-        return "createProduct"
-    }
 }

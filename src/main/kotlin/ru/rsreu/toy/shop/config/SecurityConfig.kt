@@ -37,7 +37,6 @@ open class SecurityConfig(
             .formLogin()
             .loginPage("/login")
             .failureUrl("/login?error")
-//            .successHandler()
             .and()
             .logout()
             .logoutUrl("/logout")
